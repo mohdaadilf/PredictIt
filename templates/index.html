@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>Hey There. Welcome To Predict It.</h1>
+  <p>We Use ML Algorithms to detect which disease your symptom may be related to.</p>
+  <br><br><br>
+    <h2>Enter Your Name To Get Started:</h2>
+  <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.name.label }} {{ form.name}}
+      {{ form.submit() }}
+  </form>
+</div>
+
+
+
+{% endblock  %}
