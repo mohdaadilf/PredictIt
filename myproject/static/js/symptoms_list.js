@@ -1,4 +1,4 @@
-// JavaScript code 
+// JS CODE FOR SEARCH BAR 
 function search_symptom() { 
 	let input = document.getElementById('searchbar').value 
 	input=input.toLowerCase(); 

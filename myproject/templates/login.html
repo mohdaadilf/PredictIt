@@ -1,5 +1,6 @@
 <head>
   <title>Login</title>
+  <!-- BOOTSTRAP LINKS HERE -->
   <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -23,7 +24,9 @@
     ></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/login_dark.css') }}"/>
 </head>
+
 {% block content %}
+    <!-- LOGIN FORM HERE -->
     <div class="login-div">
       <div class="logo"><a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a></div>
       <div class="fields">

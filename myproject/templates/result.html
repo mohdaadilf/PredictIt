@@ -5,6 +5,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="content">
+    <!-- FLASHES MESSAGE WHEN PREDICTION IS SAVED -->
     {% for mess in get_flashed_messages() %}
     <div class="alert alert-warning alert-dismissible fade show width" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
@@ -13,6 +14,7 @@
       {{mess}}<a href="{{url_for('predicted')}}" class="alert-link" target="_blank"> Click here </a>to see your predictions.
     </div>
     {% endfor %}
+    <!-- ACTUAL RESULT PAGE STARTS HERE -->
     <h1>Hey 
         {% if current_user.is_authenticated %} 
         {{ current_user.name }}
@@ -20,16 +22,16 @@
         {{session['name']}} 
         {% endif %}, </h1>
     <h3>Based on your symptoms, our program predicted that you may have:</h3>
-    
+    <!-- DISEASE NAME -->
     <h2 class="disease">{{predicted_disease}}</h2>
     <p><em>What are these predictions?</em></p>
     <div class="container">
-    
+    <!-- DESCRIPTIONS -->
     <p>{{predicted_disease_description}}</p>
     <p>{{predicted_disease_description2}}</p>
     </div>
     <h5>Ultimately, this is just a program. Please consult a doctor before reaching any kind of conclusion.</h5>
-    
+    <!-- CONDITION -->
     <p>Condition: 
         {% if condition == "You should take the consultation from doctor." %}
             <span class="disease">{{condition}}</span>
@@ -37,6 +39,7 @@
             <span class="mid">{{condition}}</span>
         {% endif %}
         </p>
+    <!-- THINGS TO DO -->
     <p><em>Here are some things which you can do:</em></p>
     {% if predicted_disease_description2 == '' %}
     <div class="container">    
@@ -60,6 +63,5 @@
             </div>
         </div>
     {% endif %}
-
 
 {% endblock  %}

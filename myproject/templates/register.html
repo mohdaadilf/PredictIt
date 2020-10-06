@@ -1,5 +1,6 @@
 <head>
   <title>Register</title>
+  <!-- BOOTSTRAP LINKS HERE -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -25,37 +26,38 @@
 </head>
 
 <body>
-<div class="login-div">
-  <div class="logo">
-    <a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}" /></a>
-  </div>
-  
-  <div class="fields">
-    <form method="POST">
-      {{ form.hidden_tag() }}
-      {% for mess in get_flashed_messages() %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          {{mess}}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      {% endfor %}
+  <!-- REGISTER FORM HERE -->
+  <div class="login-div">
+    <div class="logo">
+      <a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}" /></a>
+    </div>
+    
+    <div class="fields">
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for mess in get_flashed_messages() %}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{mess}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+        <div class="email">
+        {{ form.name(class='email-input', type='text', placeholder='Keanu') }}
+      </div>
       <div class="email">
-      {{ form.name(class='email-input', type='text', placeholder='Keanu') }}
+        {{ form.email(class='email-input', type='email', placeholder='keanu@example.com') }}
+      </div>
+      <div class="password">
+        {{ form.password(class='pass-input', placeholder='Password') }}
+      </div>
+      <div class="confirmPassword">
+        {{ form.pass_confirm(class='pass-input', placeholder='Confirm Password') }}
+      </div>
     </div>
-    <div class="email">
-      {{ form.email(class='email-input', type='email', placeholder='keanu@example.com') }}
-    </div>
-    <div class="password">
-      {{ form.password(class='pass-input', placeholder='Password') }}
-    </div>
-    <div class="confirmPassword">
-      {{ form.pass_confirm(class='pass-input', placeholder='Confirm Password') }}
-    </div>
+    {{ form.submit(class='signup-button') }}
+    <div class="link">Already Registered? <a href="{{ url_for('login') }}">Log In</a></div>
   </div>
-  {{ form.submit(class='signup-button') }}
-  <div class="link">Already Registered? <a href="{{ url_for('login') }}">Log In</a></div>
-</div>
 
 </body>
