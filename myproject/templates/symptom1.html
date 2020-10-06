@@ -5,6 +5,7 @@
 {% block content %}
 
 <div class="content">
+  <!-- FIRST SYMPTOM PAGE -->
   <h1>Hi 
     {% if current_user.is_authenticated %} 
       {{ current_user.name }}
@@ -14,6 +15,7 @@
   <h3>Enter Your Initial Symptom On This Page</h3>
   <p><em>Based on your initial symptom, we will use ML to show related symptoms.</em></p>
   <p class="last-p"><em><a href="{{url_for('symptoms_list')}}" target="_blank" class="text-danger">View Symptoms List</a></em></p>
+  <!-- FLASH A MESSAGE IF SYMPTOM NOT IN OUR LIST -->
   {% for mess in get_flashed_messages() %}
     <div class="alert alert-warning alert-dismissible fade show width" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
@@ -22,7 +24,7 @@
       {{mess}}<a href="{{url_for('symptoms_list')}}" class="alert-link" target="_blank"> Click here </a>to see which symptoms can be entered.
     </div>
   {% endfor %}
-  
+  <!-- FORM FOR SYMPTOM 1 -->
   <form method="POST">
     {{ form.hidden_tag() }} 
     <div class="symptom1-label">{{ form.symptom1.label }}</div>  

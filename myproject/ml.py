@@ -9,7 +9,7 @@ from sklearn.svm import SVC
 import csv
 import warnings
 import os
-
+# GLOBAL VARIABLES
 severityDictionary = dict()
 description_list = dict()
 precautionDictionary = dict()
