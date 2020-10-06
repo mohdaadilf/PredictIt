@@ -1,0 +1,41 @@
+
+.content{
+    padding-top: 20px;
+    text-align: center;
+}
+
+h2, h4{
+    text-transform: uppercase;
+}
+
+h4{
+    color:#069406;
+    padding-bottom: 20px; 
+}
+
+input{
+    text-align: center;
+}
+
+input:focus{
+    outline: none;
+}
+
+#searchbar{
+	padding:12px; 
+    border-radius: 30px; 
+    margin-bottom: 20px;
+} 
+
+input[type=text] { 
+	width: 30%; 
+} 
+
+#list{ 
+	font-size: 1.5em; 
+    list-style-position: inside;
+} 
+
+.symptoms{ 
+display: list-item;	 
+} 

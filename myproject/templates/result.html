@@ -1,0 +1,65 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}"/>
+</head>
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+    {% for mess in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show width" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{mess}}<a href="{{url_for('predicted')}}" class="alert-link" target="_blank"> Click here </a>to see your predictions.
+    </div>
+    {% endfor %}
+    <h1>Hey 
+        {% if current_user.is_authenticated %} 
+        {{ current_user.name }}
+        {%else %} 
+        {{session['name']}} 
+        {% endif %}, </h1>
+    <h3>Based on your symptoms, our program predicted that you may have:</h3>
+    
+    <h2 class="disease">{{predicted_disease}}</h2>
+    <p><em>What are these predictions?</em></p>
+    <div class="container">
+    
+    <p>{{predicted_disease_description}}</p>
+    <p>{{predicted_disease_description2}}</p>
+    </div>
+    <h5>Ultimately, this is just a program. Please consult a doctor before reaching any kind of conclusion.</h5>
+    
+    <p>Condition: 
+        {% if condition == "You should take the consultation from doctor." %}
+            <span class="disease">{{condition}}</span>
+        {% else %}
+            <span class="mid">{{condition}}</span>
+        {% endif %}
+        </p>
+    <p><em>Here are some things which you can do:</em></p>
+    {% if predicted_disease_description2 == '' %}
+    <div class="container">    
+        {% for j in precaution_list %}
+            {{ loop.index }}. {{ j }} <br>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-lg-6">
+                    {% for j in precaution_list %}
+                        {{ loop.index }}. {{ j }} <br>
+                    {% endfor %}
+                </div>
+                <div class="col-6 col-lg-6">
+                    {% for j in precaution_list2 %}
+                        {{ loop.index }}. {{ j }} <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock  %}

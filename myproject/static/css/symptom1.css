@@ -1,0 +1,31 @@
+.content{
+    padding-top: 50px;
+    padding-left: 10px;
+    height: 80%;
+    color: white;
+    background: #2b2b2b ;
+    text-align: center;
+    font-size: 120%;
+}
+
+.content h1{
+    padding-bottom: 30px;
+}
+
+.content p{
+  color: rgb(6, 148, 6);
+}
+
+.last-p{
+  padding-bottom: 20px;
+}
+
+.width{
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+form{
+  margin-bottom: 70px;
+}

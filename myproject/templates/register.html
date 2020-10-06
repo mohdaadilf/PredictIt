@@ -1,0 +1,61 @@
+<head>
+  <title>Register</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/register_dark.css') }}"/>
+</head>
+
+<body>
+<div class="login-div">
+  <div class="logo">
+    <a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}" /></a>
+  </div>
+  
+  <div class="fields">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {% for mess in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{mess}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+      <div class="email">
+      {{ form.name(class='email-input', type='text', placeholder='Keanu') }}
+    </div>
+    <div class="email">
+      {{ form.email(class='email-input', type='email', placeholder='keanu@example.com') }}
+    </div>
+    <div class="password">
+      {{ form.password(class='pass-input', placeholder='Password') }}
+    </div>
+    <div class="confirmPassword">
+      {{ form.pass_confirm(class='pass-input', placeholder='Confirm Password') }}
+    </div>
+  </div>
+  {{ form.submit(class='signup-button') }}
+  <div class="link">Already Registered? <a href="{{ url_for('login') }}">Log In</a></div>
+</div>
+
+</body>

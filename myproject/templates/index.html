@@ -1,0 +1,59 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+</head>
+<!-- JINJA TEMPLATING -->
+{% extends 'base.html' %} 
+{% block content %}
+<!-- FLASH MESSAGE FOR LOGIN/LOGOUT -->
+<div class="index">
+  {% for mess in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{mess}}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="content">
+    <!-- INDEX PAGE CONTENT -->
+    <div class="row justify-content-between index-1">
+      <div class="col-12 col-md-12 col-lg-8 align-self-center index-1">
+        <h1>Welcome To Predict It.</h1>
+        <p style="color: grey;">We Use ML Algorithms to detect which disease your symptom may be related to.</p>
+        <p class="font-italic text-success">Please make note that this is just a program, kindly consult a professional doctor before reaching any conclusions.</p>
+        <br /><br />
+        <!-- IF CURRENT USER IS LOGGED IN, SHOW HIS NAME AND BUTTON -->
+        {% if current_user.is_authenticated %}
+          <h2>Hi {{ current_user.name }}!</h2>
+          <p><em>Click Get Started to Start Predicitng.</em></p>
+          <a class="btn btn-warning predict-it-button" href="{{ url_for('symptom1') }}" role="button">Get Started</a>
+        <!-- ELSE SHOW A FORM FIELD FOR ENTERING NAME -->
+        {% else %}
+          <h2>Enter Your Name To Get Started:</h2>
+          <form method="POST">
+            <div class="form-group">
+              {{ form.hidden_tag() }} 
+              {{ form.name.label }} {{form.name(class='form-control', style='width: 30%; display: inline;',placeholder='Keanu Reeves')}} {{ form.submit(class='btn btn-warning predict-it-button')}}
+            </div>
+          </form>
+        {% endif %}
+      </div>
+      <!-- BUTTONS -->
+      <div class="col-12 col-md-12 col-lg-4 index-2 align-self-center">
+        {% if current_user.is_authenticated %}
+          <h3>To View Your Predictions:</h3>
+          <a class="btn btn-success" href="{{ url_for('predicted') }}" role="button">My Predictions</a><br /><br />
+          <h3>To Logout:</h3>
+          <a class="btn btn-warning predict-it-button" href="{{ url_for('logout') }}" role="button">Log Out</a><br /><br />
+        {% else %}
+          <h3>To Save Your Predictions:</h3>
+          <a class="btn btn-success" href="{{ url_for('register') }}" role="button">Register</a><br /><br />
+          <h3>Already Registered?</h3>
+          <a class="btn btn-primary" href="{{ url_for('login') }}" role="button">Login</a>
+        {% endif %}
+      </div>
+    </div>    
+  </div>
+{% endblock %}

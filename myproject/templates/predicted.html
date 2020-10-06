@@ -1,0 +1,31 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/predicted.css') }}"/>
+</head>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="content">
+        <h2>Hey {{ current_user.name }}, Here are your past predictions. </h2>
+        <h5><em>Please do remember that this is just a program. Consult a doctor before reaching any conclusion on your own.</em></h5>
+        <div class="container">    
+            <table>
+                <tr>
+                    <th class="table-label">Symptom</th>
+                    <th class="table-label">Disease</th>
+                </tr>
+                {% for symptom,disease in disease_dict.items() %}
+                    <tr>
+                        <td>{{symptom}}</td>
+                        <td>{{disease}}</td>
+                    </tr>
+                {% endfor %}
+            </table>                 
+        </div>
+</div>
+
+
+{% endblock %}
+
+

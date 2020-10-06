@@ -1,0 +1,35 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/symptom1.css') }}"/>
+</head>
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="content">
+  <h1>Hi 
+    {% if current_user.is_authenticated %} 
+      {{ current_user.name }}
+    {%else %} 
+      {{session['name']}} 
+    {% endif %}.</h1>
+  <h3>Enter Your Initial Symptom On This Page</h3>
+  <p><em>Based on your initial symptom, we will use ML to show related symptoms.</em></p>
+  <p class="last-p"><em><a href="{{url_for('symptoms_list')}}" target="_blank" class="text-danger">View Symptoms List</a></em></p>
+  {% for mess in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show width" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{mess}}<a href="{{url_for('symptoms_list')}}" class="alert-link" target="_blank"> Click here </a>to see which symptoms can be entered.
+    </div>
+  {% endfor %}
+  
+  <form method="POST">
+    {{ form.hidden_tag() }} 
+    <div class="symptom1-label">{{ form.symptom1.label }}</div>  
+    <div class="symptom1-input">{{ form.symptom1(class='form-control', style='width: 10%; display: inline;',placeholder='Tiredness')}}</div> <br />
+    <div class="symptom1-label">{{ form.num_days.label}}</div> 
+    <div class="symptom1-input">{{form.num_days(class='form-control', style='width: 3%; display: inline;',placeholder='2')}}</div><br> 
+    <div class="symptom1-input">{{ form.submit(class='btn btn-warning predict-it-button') }}</div>
+  </form>
+</div>
+{% endblock %}

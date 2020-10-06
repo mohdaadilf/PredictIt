@@ -1,0 +1,36 @@
+html,
+body {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.content{
+    padding-top: 20px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+h4{
+    text-transform: uppercase;
+    color: #069406;
+}
+
+#yes{
+    color: #EC4C4C;
+}
+
+#no{
+    color: #069406;
+}
+
+.form-label{
+    
+    padding-bottom: 48px;
+    text-align: end;
+    text-transform: capitalize;
+}
+
+.form-label:first-child{
+    padding-top: 13px;
+}

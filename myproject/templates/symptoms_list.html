@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/symptoms_list.css') }}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Symptoms List</title>
+</head>
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+    <h2>These are the symptoms which you can enter.</h2>
+    <h4><em>Remember, that you only need to enter one symptom, the rest is done using ML.</em></h4>
+    <input id="searchbar" onkeyup="search_symptom()" type="text"
+            name="search" placeholder="Search a symptom:"> 
+        
+        <!-- ordered list -->
+        <ol id='list'> 
+            {% for symptom in symptoms_spaced %}
+                <li class='symptoms'>{{symptom}}</li>
+            {% endfor %}
+        </ol> 
+        
+        <script src="{{ url_for('static', filename='js/symptoms_list.js') }}"></script> 
+</div>
+{% endblock %}

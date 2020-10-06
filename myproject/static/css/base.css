@@ -1,0 +1,66 @@
+html, body{
+    text-rendering: optimizeLegibility;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    background: #2b2b2b;
+    color: white;
+    margin: 0;
+}
+
+
+/* REUSABLE ELEMENTS HERE */
+h1,h2,h3{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1{
+    font-weight: 400,1 ;
+}
+
+h2{
+    font-weight: 300,1;
+}
+
+h3{
+    font-weight: 100,1;
+}
+
+
+.nav-link{
+    font-size: 115%;
+}
+
+
+/* FOOTER HERE */
+
+.row-project{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1d1d1d;
+    padding: 5px;
+    font-size: 80%;
+    text-align: center;
+    display: flex;
+}
+
+footer p{
+    color: #747474;
+    text-align: center;
+    margin-top: 23px;
+}
+
+/* BUTTON */
+
+.predict-it-button{
+    background-color: #EC4C4C;
+    color: white;
+    border-color: #2b2b2b;
+}
