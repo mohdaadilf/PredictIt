@@ -2,14 +2,11 @@ from myproject import app, db
 from flask import render_template, session, redirect, url_for, session, flash,  request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, FormField, FieldList
-from wtforms.validators import DataRequired
-import os
 from flask_login import login_required, login_user, logout_user, current_user
 from myproject.models import User, Disease
 from myproject.forms import LoginForm, RegistrationForm, InfoForm, SymptomForm, OtherSymptomForm
 import myproject.ml as ml
 
-basedir = os.path.abspath(os.path.dirname(__file__))
 symptom_list, symptoms_spaced, symptoms_dict = ml.get_symptoms_list()
 
 @app.route('/predicted')
