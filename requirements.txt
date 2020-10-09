@@ -1,0 +1,17 @@
+alembic==0.9.9
+Flask==1.0.2
+Flask-Dance==0.14.0
+Flask-DebugToolbar==0.10.1
+Flask-Login==0.4.1
+Flask-Migrate==2.1.1
+Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
+Jinja2==2.10
+MarkupSafe==1.0
+requests==2.18.4
+SQLAlchemy==1.2.6
+SQLAlchemy-Utils==0.33.2
+Werkzeug==0.14.1
+WTForms==2.1
+numpy==1.19.0
+sklearn==0.0
