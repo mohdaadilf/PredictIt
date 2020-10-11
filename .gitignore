@@ -1,0 +1,6 @@
+__pycache__
+migrations
+env
+.vscode
+myproject/__pycache__
+myproject/data.sqlite

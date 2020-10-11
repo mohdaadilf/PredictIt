@@ -1,5 +1,6 @@
 <head>
   <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- BOOTSTRAP LINKS HERE -->
   <link
       rel="stylesheet"
@@ -27,9 +28,9 @@
 
 {% block content %}
     <!-- LOGIN FORM HERE -->
-    <div class="login-div">
-      <div class="logo"><a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a></div>
-      <div class="fields">
+    <div class="m-5 card shadow mx-sm-auto rounded p-3 pt-4" style="min-width: 20rem; background-color: rgb(25, 25, 25);">
+      <div class="logo mb-4"><a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a></div>
+      <div>
       {% for mess in get_flashed_messages() %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           {{mess}}
@@ -40,14 +41,16 @@
       {% endfor %}
         <form method="POST">
         {{ form.hidden_tag() }}
-        <div class="username">
-          {{ form.email(class='user-input',  placeholder='john@example.com') }}
+        <div class="form-group">
+          {{ form.email.label }}
+          {{ form.email(class='form-control',  placeholder='john@example.com') }}
         </div>
-        <div class="password">
-          {{ form.password(class='pass-input', placeholder='password') }}
+        <div class="form-group">
+          {{ form.password.label }}
+          {{ form.password(class='form-control', placeholder='********') }}
         </div>
       </div> 
-      {{ form.submit(class='signin-button') }}  
+        {{ form.submit(class='btn btn-danger') }}  
         </form>     
         <div class="link">Not a user? <a href="{{ url_for('register') }}">Sign up</a></div>      
     </div>
