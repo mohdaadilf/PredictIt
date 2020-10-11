@@ -6,8 +6,8 @@ from wtforms import ValidationError
 
 # LOGIN FORM
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired('Kindly Enter Your Email!'), Email()])
-    password = PasswordField('Password', validators=[DataRequired('Enter Your Password!')])
+    email = StringField('Enter Email', validators=[DataRequired('Kindly Enter Your Email!'), Email()])
+    password = PasswordField('Enter Password', validators=[DataRequired('Enter Your Password!')])
     submit = SubmitField('Log In')
 
 # REGISTRATION FORM
@@ -25,7 +25,7 @@ class RegistrationForm(FlaskForm):
 
 # BASIC INDEX FORM
 class InfoForm(FlaskForm):
-    name = StringField('Name:', validators=[DataRequired('Kindly Enter Your Name!')])
+    name = StringField('Enter your name to get started:', validators=[DataRequired('Kindly Enter Your Name!')])
     submit = SubmitField('Get Started')
 
 # FIRST SYMPTOM FORM
