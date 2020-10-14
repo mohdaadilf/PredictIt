@@ -4,3 +4,4 @@ env
 .vscode
 myproject/__pycache__
 myproject/data.sqlite
+/myproject/data.sqlite
