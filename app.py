@@ -99,12 +99,8 @@ def symptom1():
             flash('Enter A Valid Symptom!')
             return redirect(url_for('symptom1'))
 
-    return render_template('symptom1.html', form=symp_form)
+    return render_template('symptom1.html', form=symp_form, symptoms_spaced=symptoms_spaced)
 
-
-@app.route('/symptoms_list')
-def symptoms_list():
-    return render_template('symptoms_list.html', symptoms_spaced = symptoms_spaced)
 
 
 # additional symptoms page

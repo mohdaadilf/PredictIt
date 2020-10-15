@@ -30,8 +30,8 @@ class InfoForm(FlaskForm):
 
 # FIRST SYMPTOM FORM
 class SymptomForm(FlaskForm):
-    symptom1 = StringField('Enter Your Symptom:', validators=[DataRequired('Kindly Enter Your Symptom!')])
-    num_days = IntegerField('Enter The Number Of Days You Are Experiencing This Symptom For:', validators=[DataRequired('Kindly Input!')])
+    symptom1 = StringField('Enter Your Initial Symptom:', validators=[DataRequired('Kindly Enter Your Symptom!')])
+    num_days = IntegerField('Number Of Days Experiencing This Symptom From:', validators=[DataRequired('Kindly Input!')])
     submit = SubmitField('Proceed')
 
 # OTHER SYMPTOMS FORM
