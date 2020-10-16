@@ -55,11 +55,22 @@
     </nav>
 
     {% block content %} {% endblock %}
+
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+        </label>
+      <span class="nav-link">DARK MODE</span>
+    </div>
+
     <!-- Footer here -->
     <footer>
       <div class="row-project">
         <p>2020 &xharr; Predict It.  &ctdot;  Not to be used as a tool for professional replacement. </p>
       </div>
     </footer>
+
+    <script src="{{ url_for('static', filename='js/theme.js')}}"></script>
   </body>
 </html>

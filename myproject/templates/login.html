@@ -23,12 +23,12 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login_dark.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"/>
 </head>
 
 {% block content %}
     <!-- LOGIN FORM HERE -->
-    <div class="m-5 card shadow mx-sm-auto rounded p-3 pt-4" style="min-width: 20rem; background-color: rgb(25, 25, 25);">
+    <div class="m-5 card shadow mx-sm-auto rounded p-3 pt-4 " style="min-width: 20rem;">
       <div class="logo mb-4"><a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a></div>
       <div>
       {% for mess in get_flashed_messages() %}
