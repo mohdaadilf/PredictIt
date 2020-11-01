@@ -8,9 +8,6 @@
     padding-bottom: 20px;
 }
 
-.content p{
-  color: rgb(6, 148, 6);
-}
 
 .last-p{
   padding-bottom: 20px;
@@ -49,10 +46,6 @@
   margin: 0 auto;
 }
 
-#list{ 
-  list-style-position: inside;
-  
-} 
 
 /* Tell the <li> to not display numbers, but keep track of what the numbers should be */
 ol li {
@@ -65,6 +58,9 @@ ol li:before {
   color: rgb(6, 148, 6);
   content: counter(list) ". ";
 }
+
+
+
 
 
 /* CUSTOM SCROLLBAR */

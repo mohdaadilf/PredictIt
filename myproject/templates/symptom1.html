@@ -14,7 +14,7 @@
           {%else %} 
             {{session['name']}} 
           {% endif %}.</h1>
-        <p><em>Based on your initial symptom, we will use ML to show related symptoms.</em></p>
+        <p class="green-text"><em>Based on your initial symptom, we will use ML to show related symptoms.</em></p>
         <!-- FLASH A MESSAGE IF SYMPTOM NOT IN OUR LIST -->
         {% for mess in get_flashed_messages() %}
           <div class="alert alert-warning alert-dismissible fade show width" role="alert">

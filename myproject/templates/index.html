@@ -59,7 +59,7 @@
     </div>
     <div class="col-12 col-sm-6">
       {% if current_user.is_authenticated %}
-        <p class="grey-text">To safely log out of our account</p>
+        <p class="grey-text">To log out of our account</p>
         <a class="btn btn-warning predict-it-button" href="{{ url_for('logout') }}" role="button">Log Out</a>
       {% else %}
         <p class="grey-text">Already Registered?</p>

@@ -6,17 +6,17 @@ from wtforms import ValidationError
 
 # LOGIN FORM
 class LoginForm(FlaskForm):
-    email = StringField('Enter Email', validators=[DataRequired('Kindly Enter Your Email!'), Email()])
-    password = PasswordField('Enter Password', validators=[DataRequired('Enter Your Password!')])
+    email = StringField('Enter Email:', validators=[DataRequired('Kindly Enter Your Email!'), Email()])
+    password = PasswordField('Enter Password:', validators=[DataRequired('Enter Your Password!')])
     submit = SubmitField('Log In')
 
 # REGISTRATION FORM
 class RegistrationForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired('Enter Your Name Please!')])
-    email = StringField('Email', validators=[DataRequired('Enter A Valid Email Please!'), Email()])
-    password = PasswordField('Password', validators=[DataRequired('Enter Password Please!'), EqualTo('pass_confirm', message='Passwords Must Match!')])
-    pass_confirm = PasswordField('Confirm password', validators=[DataRequired()])
-    submit = SubmitField('Register!')
+    name = StringField('Enter Your Name:', validators=[DataRequired('Enter Your Name Please!')])
+    email = StringField('Enter Your Email:', validators=[DataRequired('Enter A Valid Email Please!'), Email()])
+    password = PasswordField('Create A Password:', validators=[DataRequired('Enter Password Please!'), EqualTo('pass_confirm', message='Passwords Must Match!')])
+    pass_confirm = PasswordField('Confirm Password:', validators=[DataRequired()])
+    submit = SubmitField('Register')
 
     def check_email(self, field):
         # Check if not None for that user email!

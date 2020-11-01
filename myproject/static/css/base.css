@@ -1,9 +1,10 @@
 :root {
     --font-color: black;
     --bg-color: #dbc3e5;
-    --card-color: #3498db;
+    --card-color: #54a1d4;
     --navbar-color: rgb(37, 37, 37);
     --text-muted-color: rgb(77, 77, 77);
+    --green-color: rgb(158, 0, 0);
 }
 
 [data-theme="dark"] {
@@ -12,6 +13,7 @@
     --card-color: #623475;
     --navbar-color: black;
     --text-muted-color: rgb(184, 184, 184);
+    --green-color: rgb(6, 148, 6);
 }
 
 html, body{
@@ -44,6 +46,10 @@ h3{
 
 .grey-text{
   color: var(--text-muted-color);
+}
+
+.green-text{
+  color: var(--green-color);
 }
 
 /* NAV BAR */
