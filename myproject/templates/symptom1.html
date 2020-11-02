@@ -7,7 +7,7 @@
 <div class="content">
   <div class="row align-items-center">
     <div class="col-12 col-md-12 col-lg-6">
-      <div class="m-5 card shadow mx-sm-auto rounded p-3" style="max-width: 40rem;">
+      <div class="m-5 card mx-sm-auto p-3 mb-5 " style="max-width: 40rem;">
         <h1>Hi 
           {% if current_user.is_authenticated %} 
             {{ current_user.name }}
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-12 col-md-12 col-lg-6">
-      <div class="m-5 card shadow mx-sm-auto rounded p-3 scroll-div" style="max-width: 35rem;">
+      <div class="m-5 card mx-sm-auto  p-3 scroll-div" style="max-width: 35rem;">
         <h3>Symptoms You Can Enter:</h3>
         <input id="searchbar" class="form-control w-75" onkeyup="search_symptom()" type="text"
             name="search" placeholder="Search a symptom:"> 

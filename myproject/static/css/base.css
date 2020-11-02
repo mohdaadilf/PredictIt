@@ -13,7 +13,7 @@
     --card-color: #623475;
     --navbar-color: black;
     --text-muted-color: rgb(184, 184, 184);
-    --green-color: rgb(6, 148, 6);
+    --green-color: rgb(69, 243, 69);
 }
 
 html, body{
@@ -179,6 +179,7 @@ footer p{
   .card{
       background-color: var(--card-color);
       box-shadow: 15px 15px 8px 0 rgba(0, 0, 0, 0.226);
+      border-radius: 20px;
       /* transition: 0.1s ease-in; */
       
   } 

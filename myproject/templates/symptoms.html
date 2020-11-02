@@ -6,30 +6,41 @@
 {% block content %}
 <!-- ALL OTHER SYMPTOMS ARE ASKED HERE -->
   <div class="content">
-  <h2>Hey 
-      {% if current_user.is_authenticated %} 
-        {{ current_user.name }}
-      {%else %} 
-        {{session['name']}} 
-      {% endif %}, You entered {{session['symptom1_spaced']}}.</h2>
-      <h4><em>Based on your initial symptom, we are showing relevant symptoms.</em></h4>
-      <h5>Please select <span id="yes">'yes'</span> if facing the symptom, else select <span id="no">'no'</span>.</h5>
-      <!-- SINCE WE ARE USING FORM FIELDS, HAD TO WRITE LABELS SEPERATELY, SO THIS HELPS TO ALIGN THEM -->
-      <div class="row justify-content-center">
-        <div class="col-6 col-md-6 col-lg-6">
-          {% for symptom in symptoms_label %}
-            <div class="form-label"><strong>{{symptom}}</strong></div>
-          {% endfor %}
-        </div>
-        <div class="col-6 col-md-6 col-lg-6">
-          <form method="POST">
-            {{ form.hidden_tag() }}
-            {% for field in form.symptoms%}
-              {{field()}}
-            {% endfor %}
+    <div class="m-5 card mx-sm-auto p-3 mb-5" style="max-width: 65rem;">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 text">
+          <div class="parent">
+          <h2>Hey 
+            {% if current_user.is_authenticated %} 
+              {{ current_user.name }}
+            {%else %} 
+              {{session['name']}} 
+            {% endif %}<br>You entered <span class="green-text">{{session['symptom1_spaced']}}</span>.</h2>
+            <h4 class="green-text"><em>Based on your initial symptom, we are showing relevant symptoms.</em></h4>
+            <h5>Please select <span id="yes">'yes'</span> if facing the symptom, else select <span id="no">'no'</span>.</h5>
           </div>
-            {{form.submit(class='btn btn-warning predict-it-button')}}
-        </form>   
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="row justify-content-center">
+            <h4>Are you experiencing</h4>
+            <div class="col-6 col-md-6 col-lg-6">
+              {% for symptom in symptoms_label %}
+                <div class="form-label"><strong>{{symptom}}</strong></div>
+              {% endfor %}
+            </div>
+            <div class="col-6 col-md-6 col-lg-6">
+              <form method="POST">
+                {{ form.hidden_tag() }}
+                {% for field in form.symptoms%}
+                  {{field()}}
+                {% endfor %}
+              </div>
+                {{form.submit(class='btn btn-warning predict-it-button')}}
+            </form>  
+          </div> 
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock  %}
 

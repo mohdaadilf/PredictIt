@@ -6,7 +6,7 @@
 
 {% block content %}
     <!-- LOGIN FORM HERE -->
-    <div class="m-5 card shadow mx-sm-auto rounded p-3 pt-4 " style="max-width: 20rem;">
+    <div class="m-5 card mx-sm-auto p-3 mb-5 " style="max-width: 20rem;">
       <div class="logo mb-4"><a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a></div>
       <div>
       {% for mess in get_flashed_messages() %}
