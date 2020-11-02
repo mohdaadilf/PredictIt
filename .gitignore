@@ -4,3 +4,4 @@ myproject/data.sqlite
 .dist
 myproject/__pycache__
 __pycache__
+myproject/__pycache__/ml.cpython-38.pyc

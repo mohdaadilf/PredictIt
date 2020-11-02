@@ -119,7 +119,7 @@ footer p{
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     bottom: 70px;
     right: 10px;
   }
@@ -189,5 +189,7 @@ footer p{
     transform: scale(1.03,1.03);
     
 }
+
+
 
  

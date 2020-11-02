@@ -145,7 +145,7 @@ def result():
             db.session.commit()
             ml.yes_or_no = []
             flash('Prediction saved!')
-    return render_template("result.html", condition=ml.condition, precaution_list=ml.precaution_list, predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description, predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
+    return render_template("result.html", condition=ml.condition,color = ml.color, precaution_list=ml.precaution_list, predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description, predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
 
 
 

@@ -24,6 +24,7 @@ yes_or_no = []
 le = ''
 reduced_data = []
 precaution_list2 = ''
+color = ''
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 def get_symptoms_list():
@@ -212,6 +213,7 @@ def recurse2(num_days):
     global symptoms_exp
     global yes_or_no
     global severityDictionary
+    global color
 
     for i, option in enumerate(yes_or_no):
         if option == 'yes':
@@ -243,16 +245,18 @@ def recurse2(num_days):
             sum = sum+severityDictionary[item]
         if((sum*days)/(len(exp)+1) > 13):
             condition1 = "You should take the consultation from doctor."
+            color1 = '#c0392b'
         else:
             condition1 = "It might not be that bad but you should take precautions."
-        return condition1
+            color1 = '#e67e22'
+        return condition1,color1
 
     
 
     # predicts the second disease
     second_prediction = sec_predict(symptoms_exp)
     # calculates and stores the condition
-    condition = calc_condition(symptoms_exp, num_days)
+    condition,color = calc_condition(symptoms_exp, num_days)
 
     # if first and 2nd disease are same, do this
     if(present_disease[0] == second_prediction[0]):
