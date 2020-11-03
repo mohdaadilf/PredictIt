@@ -5,33 +5,58 @@
 {% block content %}
 
 <div class="content">
-  <!-- FIRST SYMPTOM PAGE -->
-  <h1>Hi 
-    {% if current_user.is_authenticated %} 
-      {{ current_user.name }}
-    {%else %} 
-      {{session['name']}} 
-    {% endif %}.</h1>
-  <h3>Enter Your Initial Symptom On This Page</h3>
-  <p><em>Based on your initial symptom, we will use ML to show related symptoms.</em></p>
-  <p class="last-p"><em><a href="{{url_for('symptoms_list')}}" target="_blank" class="text-danger">View Symptoms List</a></em></p>
-  <!-- FLASH A MESSAGE IF SYMPTOM NOT IN OUR LIST -->
-  {% for mess in get_flashed_messages() %}
-    <div class="alert alert-warning alert-dismissible fade show width" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      {{mess}}<a href="{{url_for('symptoms_list')}}" class="alert-link" target="_blank"> Click here </a>to see which symptoms can be entered.
+  <div class="row align-items-center">
+    <div class="col-12 col-md-12 col-lg-6">
+      <div class="m-5 card mx-sm-auto p-3 mb-5 " style="max-width: 40rem;">
+        <h1>Hi 
+          {% if current_user.is_authenticated %} 
+            {{ current_user.name }}
+          {%else %} 
+            {{session['name']}} 
+          {% endif %}.</h1>
+        <p class="green-text"><em>Based on your initial symptom, we will use ML to show related symptoms.</em></p>
+        <!-- FLASH A MESSAGE IF SYMPTOM NOT IN OUR LIST -->
+        {% for mess in get_flashed_messages() %}
+          <div class="alert alert-warning alert-dismissible fade show width" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{mess}}
+          </div>
+        {% endfor %}
+        <!-- FORM FOR SYMPTOM 1 -->
+        <form method="POST">
+          <div class="form-group">
+            {{ form.hidden_tag() }}  
+              {{ form.symptom1.label }} 
+              <div class="w-50 mr-auto ml-auto">{{form.symptom1(class='form-control input-field', placeholder='Tiredness')}}</div>
+                {{ form.num_days.label}}
+                <div class="mr-auto ml-auto" style="max-width: 4rem;">{{form.num_days(class='form-control input-field', placeholder='3')}}</div>
+                {{ form.submit(class='btn btn-warning predict-it-button')}}
+          </div>
+        </form>
+        </div>
     </div>
-  {% endfor %}
-  <!-- FORM FOR SYMPTOM 1 -->
-  <form method="POST">
-    {{ form.hidden_tag() }} 
-    <div class="symptom1-label">{{ form.symptom1.label }}</div>  
-    <div class="symptom1-input">{{ form.symptom1(class='form-control', style='width: 10%; display: inline;',placeholder='Tiredness')}}</div> <br />
-    <div class="symptom1-label">{{ form.num_days.label}}</div> 
-    <div class="symptom1-input">{{form.num_days(class='form-control', style='width: 3%; display: inline;',placeholder='2')}}</div><br> 
-    <div class="symptom1-input">{{ form.submit(class='btn btn-warning predict-it-button') }}</div>
-  </form>
+    <div class="col-12 col-md-12 col-lg-6">
+      <div class="m-5 card mx-sm-auto  p-3 scroll-div" style="max-width: 35rem;">
+        <h3>Symptoms You Can Enter:</h3>
+        <input id="searchbar" class="form-control w-75" onkeyup="search_symptom()" type="text"
+            name="search" placeholder="Search a symptom:"> 
+        
+        <!-- ordered list -->
+        <div class="scroll-content">
+        <ol id='list'> 
+            {% for symptom in symptoms_spaced %}
+                <li class='symptoms'>{{symptom}}</li>
+            {% endfor %}
+        </ol> 
+      </div>
+        <script src="{{ url_for('static', filename='js/symptoms_list.js') }}"></script> 
+        </div>
+    </div>
+  </div>
+  <!-- FIRST SYMPTOM PAGE -->
+  
+  
 </div>
 {% endblock %}

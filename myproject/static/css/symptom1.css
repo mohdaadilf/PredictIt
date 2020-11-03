@@ -1,20 +1,13 @@
 .content{
-    padding-top: 50px;
-    padding-left: 10px;
     height: 80%;
-    color: white;
-    background: #2b2b2b ;
     text-align: center;
     font-size: 120%;
 }
 
 .content h1{
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
-.content p{
-  color: rgb(6, 148, 6);
-}
 
 .last-p{
   padding-bottom: 20px;
@@ -26,6 +19,66 @@
   text-align: center;
 }
 
-form{
-  margin-bottom: 70px;
+.input-field{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.scroll-div{
+  height: 500px;
+}
+
+.scroll-content{
+  height: 480px;
+  overflow: auto;
+}
+
+.form-control{
+  text-align: center;
+}
+
+#searchbar{
+  margin: 0 auto;
+}
+
+
+/* Tell the <li> to not display numbers, but keep track of what the numbers should be */
+ol li {
+  counter-increment: list;
+  list-style-type: none;
+  position: relative;
+}
+/* Outout the numbers using the counter() function, but use a custom color */
+ol li:before {
+  color: rgb(6, 148, 6);
+  content: counter(list) ". ";
+}
+
+
+
+
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

@@ -99,12 +99,8 @@ def symptom1():
             flash('Enter A Valid Symptom!')
             return redirect(url_for('symptom1'))
 
-    return render_template('symptom1.html', form=symp_form)
+    return render_template('symptom1.html', form=symp_form, symptoms_spaced=symptoms_spaced)
 
-
-@app.route('/symptoms_list')
-def symptoms_list():
-    return render_template('symptoms_list.html', symptoms_spaced = symptoms_spaced)
 
 
 # additional symptoms page
@@ -149,7 +145,7 @@ def result():
             db.session.commit()
             ml.yes_or_no = []
             flash('Prediction saved!')
-    return render_template("result.html", condition=ml.condition, precaution_list=ml.precaution_list, predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description, predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
+    return render_template("result.html", condition=ml.condition,color = ml.color, precaution_list=ml.precaution_list, predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description, predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
 
 
 

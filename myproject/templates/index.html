@@ -16,9 +16,9 @@
   {% endfor %}
 </div>
 
-<div class="m-5 card shadow mx-sm-auto rounded p-3" style="max-width: 30rem; background-color: rgb(25, 25, 25);">
+<div class="m-5 card mx-sm-auto p-3 mb-5" style="max-width: 30rem;">
   <h2 class="text-center">Welcome to Predict It</h2>
-  <p class="text-center text-muted">
+  <p class="text-center grey-text">
     We Use ML Algorithms to detect which disease your symptom may be related to
   </p>
   <div class="mt-2">
@@ -50,20 +50,21 @@
   <div class="row text-center">
     <div class="col-12 col-sm-6">
       {% if current_user.is_authenticated %}
+        <p class="grey-text">View your predictions</p>
         <a class="btn btn-success" href="{{ url_for('predicted') }}" role="button">My Predictions</a>
-        <p class="text-muted">View your predictions</p>
       {% else %}
+        <p class="grey-text">To save your predictions</p>
         <a class="btn btn-success" href="{{ url_for('register') }}" role="button">Register</a>
-        <p class="text-muted">To save your predictions</p>
       {% endif %}
     </div>
     <div class="col-12 col-sm-6">
       {% if current_user.is_authenticated %}
+        <p class="grey-text">To log out of our account</p>
         <a class="btn btn-warning predict-it-button" href="{{ url_for('logout') }}" role="button">Log Out</a>
-        <p class="text-muted">To safely log out of our account</p>
       {% else %}
-        <a class="btn btn-primary" href="{{ url_for('login') }}" role="button">Login</a>
-        <p class="text-muted">Already Registered?</p>
+        <p class="grey-text">Already Registered?</p>
+        <a class="btn btn-orange" href="{{ url_for('login') }}" role="button">Login</a>
+        
       {% endif %}
     </div>
   </div>

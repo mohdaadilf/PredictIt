@@ -1,6 +1,7 @@
-__pycache__
 migrations
-env
-.vscode
-myproject/__pycache__
 myproject/data.sqlite
+.vscode
+.dist
+myproject/__pycache__
+__pycache__
+myproject/__pycache__/ml.cpython-38.pyc
