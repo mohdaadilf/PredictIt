@@ -9,19 +9,17 @@ h1{
 
 
 .disease{
-    color: #EC4C4C;
+    color: #bb1715;
 }
 
-.mid{
-    color:  rgb(6, 148, 6);
-}
 
-.container{
-    border: 2px solid white;
-}
+
 
 h5{
     text-transform: uppercase;
-    color:  rgb(6, 148, 6);
+   
 }
 
+body{
+    font-size: 105%;
+}

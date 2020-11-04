@@ -1,3 +1,11 @@
+:root{
+  --green-color: rgb(158, 0, 0);
+}
+
+[data-theme="dark"]{
+  --green-color: rgb(69, 243, 69);
+}
+
 .content{
     height: 80%;
     text-align: center;
@@ -55,7 +63,7 @@ ol li {
 }
 /* Outout the numbers using the counter() function, but use a custom color */
 ol li:before {
-  color: rgb(6, 148, 6);
+  color: var(--green-color);
   content: counter(list) ". ";
 }
 

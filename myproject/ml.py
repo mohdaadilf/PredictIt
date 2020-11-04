@@ -156,15 +156,7 @@ def tree_to_code(tree, feature_names, symptom1):
     while True:
         conf, cnf_dis = check_pattern(chk_dis, symptom1)
         if conf == 1:
-            # print("searches related to input: ")
-            # for num,it in enumerate(cnf_dis):
-            #     print(num,")",it)
-            # if num!=0:
-            #     print(f"Select the one you meant (0 - {num}):  ", end="")
-            #     conf_inp = int(input(""))
-            # else:
             conf_inp = 0
-
             disease_input = cnf_dis[conf_inp]
             break
 
@@ -215,9 +207,12 @@ def recurse2(num_days):
     global severityDictionary
     global color
 
+    print(yes_or_no)
+    print(symptoms_given)
     for i, option in enumerate(yes_or_no):
         if option == 'yes':
             symptoms_exp.append(list(symptoms_given)[i])
+    
 
     def sec_predict(symptoms_exp):
         df = pd.read_csv(f'{basedir}/datasets/Training.csv')
@@ -248,7 +243,7 @@ def recurse2(num_days):
             color1 = '#c0392b'
         else:
             condition1 = "It might not be that bad but you should take precautions."
-            color1 = '#e67e22'
+            color1 = '#c9710e'
         return condition1,color1
 
     

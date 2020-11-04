@@ -7,22 +7,24 @@
 {% block content %}
 <!-- MADE A TABLE AND ADD ELEMENTS USING FOR LOOP -->
 <div class="content">
+    <div class="m-5 card mx-sm-auto p-3 mb-5" style="max-width: fit-content;">
         <h2>Hey {{ current_user.name }}, Here are your past predictions. </h2>
-        <h5><em>Please do remember that this is just a program. Consult a doctor before reaching any conclusion on your own.</em></h5>
+        <h5 class="green-text"><em>Please do remember that this is just a program. Consult a doctor before reaching any conclusion on your own.</em></h5>
         <div class="container">    
-            <table>
+            <table class="result-border">
                 <tr>
-                    <th class="table-label">Symptom</th>
-                    <th class="table-label">Disease</th>
+                    <th class="table-label result-border">Symptom</th>
+                    <th class="table-label result-border">Disease</th>
                 </tr>
                 {% for symptom,disease in disease_dict.items() %}
                     <tr>
-                        <td>{{symptom}}</td>
-                        <td>{{disease}}</td>
+                        <td class="result-border">{{symptom}}</td>
+                        <td class="result-border">{{disease}}</td>
                     </tr>
                 {% endfor %}
             </table>                 
         </div>
+    </div>
 </div>
 {% endblock %}
 

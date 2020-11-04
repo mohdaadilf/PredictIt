@@ -5,6 +5,9 @@
     --navbar-color: rgb(37, 37, 37);
     --text-muted-color: rgb(77, 77, 77);
     --green-color: rgb(158, 0, 0);
+    --result-disease: 0 0 6px #000000, 0 0 6px #000000;
+    --result-green: rgb(69, 243, 69);
+    --result-border:black 2px solid;
 }
 
 [data-theme="dark"] {
@@ -14,6 +17,9 @@
     --navbar-color: black;
     --text-muted-color: rgb(184, 184, 184);
     --green-color: rgb(69, 243, 69);
+    --result-disease: 0 0 6px #000000, 0 0 6px #000000;
+    --result-green: rgb(69, 243, 69);
+    --result-border: white 2px solid ;
 }
 
 html, body{
@@ -50,6 +56,18 @@ h3{
 
 .green-text{
   color: var(--green-color);
+}
+
+.result-disease{
+  text-shadow: var(--result-disease);
+}
+
+.result-green{
+  color: var(--result-green);
+}
+
+.result-border{
+  border: var(--result-border);
 }
 
 /* NAV BAR */

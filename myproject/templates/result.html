@@ -24,26 +24,26 @@
         {% endif %}, </h1>
     <h3>Based on your symptoms, our program predicted that you may have:</h3>
     <!-- DISEASE NAME -->
-    <h2 class="disease">{{predicted_disease}}</h2>
+    <h2 class="disease result-disease">{{predicted_disease}}</h2>
     <p><em>What are these predictions?</em></p>
-    <div class="container">
+    <div class="container result-border">
     <!-- DESCRIPTIONS -->
     <p>{{predicted_disease_description}}</p>
     <p>{{predicted_disease_description2}}</p>
     </div>
-    <h5>Ultimately, this is just a program. Please consult a doctor before reaching any kind of conclusion.</h5>
+    <h5 class="result-green">Ultimately, this is just a program. Please consult a doctor before reaching any kind of conclusion.</h5>
     <!-- CONDITION -->
     <p>Condition: 
         {% if condition == "You should take the consultation from doctor." %}
-            <span class="disease">{{condition}}</span>
+            <span class="result-green">{{condition}}</span>
         {% else %}
-            <span class="mid">{{condition}}</span>
+            <span class="result-green">{{condition}}</span>
         {% endif %}
         </p>
     <!-- THINGS TO DO -->
     <p><em>Here are some things which you can do:</em></p>
     {% if predicted_disease_description2 == '' %}
-    <div class="container">    
+    <div class="container result-border">    
         {% for j in precaution_list %}
             {{ loop.index }}. {{ j }} <br>
         {% endfor %}

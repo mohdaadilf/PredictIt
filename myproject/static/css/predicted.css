@@ -1,6 +1,5 @@
 h5{
     text-transform: uppercase;
-    color:  rgb(6, 148, 6);
 }
 
 .content{
@@ -15,8 +14,11 @@ h5{
 }
 
 
+
+
+/* TABLE */
 .table-label{
-    color:  #EC4C4C;
+    color:  rgb(158, 0, 0);
     margin-bottom: 0;
 }
 
@@ -24,18 +26,15 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
     margin-top: 5px;
-    border: 2px solid white;
     text-align: center;
     font-size: 110%;
     
 }
 
 td, th{
-    border-right: 2px white solid;
     padding: 4px;
 }
 
 th{
     text-transform: uppercase;
-    border-bottom: 2px solid white;
 }
