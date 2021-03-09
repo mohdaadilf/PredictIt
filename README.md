@@ -1,5 +1,10 @@
 # PredictIt
-PredictIt - A Disease Predictor Model which uses ML to detect the disease and show precautions and predicted disease accordingly.
+PredictIt - A Disease Predictor Website which uses ML to detect the disease and show precautions and predicted disease accordingly.
+
+## Built using:
+1. Flask
+2. Python Scikit Learn Libraries
+3. HTML, CSS, JS
 
 
 ## **Steps to run this site on your localhost:**
