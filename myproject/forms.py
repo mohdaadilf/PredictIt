@@ -14,13 +14,18 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
     name = StringField('Enter Your Name:', validators=[DataRequired('Enter Your Name Please!')])
     email = StringField('Enter Your Email:', validators=[DataRequired('Enter A Valid Email Please!'), Email()])
-    password = PasswordField('Create A Password:', validators=[DataRequired('Enter Password Please!'), EqualTo('pass_confirm', message='Passwords Must Match!')])
+    password = PasswordField('Create A Password:', validators=[DataRequired('Enter Password Please!'),
+                                                               EqualTo('pass_confirm', message='Passwords Must Match!')])
     pass_confirm = PasswordField('Confirm Password:', validators=[DataRequired()])
     submit = SubmitField('Register')
 
     def check_email(self, field):
         # Check if not None for that user email!
+        '''
         if User.query.filter_by(email=field.data).first():
+            raise ValidationError('Your email has been registered already!')
+        '''
+        if field.query.filter_by(email=field.data).first():
             raise ValidationError('Your email has been registered already!')
 
 # BASIC INDEX FORM

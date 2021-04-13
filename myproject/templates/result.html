@@ -17,7 +17,7 @@
     <!-- ACTUAL RESULT PAGE STARTS HERE -->
     <div class="m-5 card mx-sm-auto p-3 mb-5" style="max-width: 65rem; background-color: {{color}};">
     <h1>Hey 
-        {% if current_user.is_authenticated %} 
+        {% if current_user.is_authenticated %}
         {{ current_user.name }}
         {%else %} 
         {{session['name']}} 
@@ -31,7 +31,9 @@
     <p>{{predicted_disease_description}}</p>
     <p>{{predicted_disease_description2}}</p>
     </div>
-    <h5 class="result-green">Ultimately, this is just a program. Please consult a doctor before reaching any kind of conclusion.</h5>
+    <h5 class="result-green">Ultimately, this is just a program. Please consult a doctor before reaching any kind of
+        conclusion.</h5>
+    </div> <!---Remove for issues--->
     <!-- CONDITION -->
     <p>Condition: 
         {% if condition == "You should take the consultation from doctor." %}

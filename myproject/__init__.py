@@ -14,13 +14,14 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
     os.path.join(basedir, 'data.sqlite')
+print(os.path.join(basedir, 'data.sqlite'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # DATABASE CREATED AND MIGRATE SET UP
 db = SQLAlchemy(app)
 Migrate(app, db)
 
-# iNITIALIZING LOGIN MANAGER
+# INITIALIZING LOGIN MANAGER
 login_manager.init_app(app)
 
 # WHICH FUNCTION WILL THE USER NEED TO SEE FOR LOGIN

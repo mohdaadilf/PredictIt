@@ -16,11 +16,9 @@
   {% endfor %}
 </div>
 
-<div class="m-5 card mx-sm-auto p-3 mb-5" style="max-width: 30rem;">
-  <h2 class="text-center">Welcome to Predict It</h2>
-  <p class="text-center grey-text">
-    We Use ML Algorithms to detect which disease your symptom may be related to
-  </p>
+<div class="m-5 card mx-sm-auto p-3" style="max-width: 30rem;">
+  <h2 class="text-center">Welcome to Smart Health!</h2>
+  <p class="text-center grey-text">We Use ML Algorithms to detect which disease your symptom may be related to!</p>
   <div class="mt-2">
     {% if current_user.is_authenticated %}
       <div class="text-center">        
@@ -28,6 +26,7 @@
         <a class="btn btn-warning predict-it-button mb-1 w-50" href="{{ url_for('symptom1') }}" role="button">Get Started</a>
         <p><em>Click Get Started to Start Predicting</em></p>
       </div>
+
     <!-- ELSE SHOW A FORM FIELD FOR ENTERING NAME -->
     {% else %}
       <form method="POST">
@@ -47,6 +46,7 @@
   <p class="text-center">
     Please make note that this is just a program, kindly consult a professional doctor before reaching any conclusions
   </p>
+
   <div class="row text-center">
     <div class="col-12 col-sm-6">
       {% if current_user.is_authenticated %}
@@ -64,9 +64,13 @@
       {% else %}
         <p class="grey-text">Already Registered?</p>
         <a class="btn btn-orange" href="{{ url_for('login') }}" role="button">Login</a>
-        
       {% endif %}
     </div>
   </div>
-</div>
+    <div class="mt-3" >
+      <h6 class="text-center grey-text" >For Consultations</h6>
+      <p align="center"><a class="btn-teal btn mt-2" style="text-align:center" href="{{url_for('consultation')}}"
+                           role="button">Consultations</a></p>
+    </div>
+  </div>
 {% endblock %}

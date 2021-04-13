@@ -6,31 +6,34 @@
 
 {% block content %}
     <!-- LOGIN FORM HERE -->
-    <div class="m-5 card mx-sm-auto p-3 mb-5 " style="max-width: 20rem;">
-      <div class="logo mb-4"><a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a></div>
+  <div class="m-5 card mx-sm-auto p-3 mb-5 " style="max-width: 20rem;">
+      <div class="logo mb-4">
+        <a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='img/logo1.png')}}"/></a>
+      </div>
       <div>
-      {% for mess in get_flashed_messages() %}
+        {% for mess in get_flashed_messages() %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           {{mess}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      {% endfor %}
+        {% endfor %}
+      </div><!-------------delete-------->
         <form method="POST">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          {{ form.email.label }}
-          {{ form.email(class='form-control',  placeholder='john@example.com') }}
-        </div>
-        <div class="form-group">
-          {{ form.password.label }}
-          {{ form.password(class='form-control', placeholder='********') }}
-        </div>
-      </div> 
-        {{ form.submit(class='btn btn-danger') }}  
-        </form>     
-        <div class="link">Not a user? <a href="{{ url_for('register') }}" class="grey-text">Sign up</a></div>      
-    </div>
+          {{ form.hidden_tag() }}
+          <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class='form-control',  placeholder='john@example.com') }}
+          </div>
+          <div class="form-group">
+            {{ form.password.label }}
+            {{ form.password(class='form-control', placeholder='********') }}
+          </div>
+        <!----</div>---------->
+          {{ form.submit(class='btn btn-danger') }}
+        </form>
+        <div class="link">Not a user? <a href="{{ url_for('register') }}" class="grey-text">Sign up</a></div>
+  </div>
 {% endblock %}
 

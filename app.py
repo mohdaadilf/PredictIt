@@ -104,7 +104,7 @@ def symptom1():
 
 
 # additional symptoms page
-
+#check working soon
 
 @app.route('/symptoms', methods=['GET', 'POST'])
 def ml_symptom():
@@ -145,9 +145,14 @@ def result():
             db.session.commit()
             ml.yes_or_no = []
             flash('Prediction saved!')
-    return render_template("result.html", condition=ml.condition,color = ml.color, precaution_list=ml.precaution_list, predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description, predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
+    return render_template("result.html", condition=ml.condition,color = ml.color, precaution_list=ml.precaution_list,
+                           predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description,
+                           predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
 
 
+@app.route('/consultation',methods = ['GET','POST'])
+def consultation():
+    return render_template('consultation.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

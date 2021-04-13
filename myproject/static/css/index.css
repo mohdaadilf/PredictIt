@@ -1,6 +1,6 @@
 .content{
-  height: 80%;
-  margin-top: 50px;
+  height: 10%;
+  margin-top: 0px;
 }
 
 .index-2{
@@ -11,3 +11,6 @@
   padding-left: 15px;
 }
 
+.card{
+margin-bottom: 50px;
+}
