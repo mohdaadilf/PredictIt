@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import SubmitField, FormField, FieldList
 from flask_login import login_required, login_user, logout_user, current_user
 from myproject.models import User, Disease
-from myproject.forms import LoginForm, RegistrationForm, InfoForm, SymptomForm, OtherSymptomForm
+from myproject.forms import LoginForm, RegistrationForm, InfoForm, SymptomForm, OtherSymptomForm,Consul
 import myproject.ml as ml
 
 symptom_list, symptoms_spaced, symptoms_dict = ml.get_symptoms_list()
@@ -152,7 +152,10 @@ def result():
 
 @app.route('/consultation',methods = ['GET','POST'])
 def consultation():
-    return render_template('consultation.html')
+    form = Consul()
+    listStatus = [('Ortho', 'Orthopedic'), ('Pediat', 'Pediatric'), ('Onco', 'Oncologist')]
+    default = 'Ortho'
+    return render_template('consultation.html', listStatus=listStatus, default=default, form = form)
 
 if __name__ == "__main__":
     app.run(debug=True)

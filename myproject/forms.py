@@ -4,6 +4,8 @@ from wtforms import StringField, PasswordField, SubmitField, IntegerField, Radio
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 
+from wtforms.fields.html5 import DateTimeField, DateField, TimeField
+
 # LOGIN FORM
 class LoginForm(FlaskForm):
     email = StringField('Enter Email:', validators=[DataRequired('Kindly Enter Your Email!'), Email()])
@@ -42,3 +44,12 @@ class SymptomForm(FlaskForm):
 # OTHER SYMPTOMS FORM
 class OtherSymptomForm(Form):
     symptom = RadioField('', choices=[('yes', 'Yes'), ('no', 'No')], validators=[DataRequired('Please Select Yes or No!')])
+
+class Consul(FlaskForm):
+    date = DateField('Select Date:', format='%d-%m-%y', validators=(DataRequired(),))
+    time = TimeField('Select Time:', format='%H:%M')
+    submit = SubmitField('Confirm Appointment')
+
+    def validate_field(form, field):
+        if field.data < form.date.data:
+            raise ValidationError("End date must not be earlier than start date.")
