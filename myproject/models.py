@@ -14,7 +14,7 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
 
-    # this is the tablename inside the database
+    # this is the table name inside the database
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)  # id, remains unique

@@ -3,7 +3,7 @@ h5{
 }
 
 .content{
-    color:  rgb(0, 35, 102);
+    color:  rgb(255, 255, 255);
     text-align: center;
     margin-bottom: 50px;
     margin-top: 10px;
@@ -11,7 +11,7 @@ h5{
 
 .container{
     margin-top: 50px;
-    color:  rgb(0, 35, 102);
+    color:  rgb(255, 255, 255);
     
 }
 
@@ -20,7 +20,7 @@ h5{
 
 /* TABLE */
 .table-label{
-    color:  rgb(0, 35, 102);
+    color:  rgb(255, 255, 255);
     margin-bottom: 0;
 }
 

@@ -1,19 +1,22 @@
-from myproject import app, db
-from flask import render_template, session, redirect, url_for, session, flash,  request
+from myproject import app, db, mail
+from flask import render_template, session, redirect, url_for, session, flash, request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, FormField, FieldList
 from flask_login import login_required, login_user, logout_user, current_user
 from myproject.models import User, Disease
-from myproject.forms import LoginForm, RegistrationForm, InfoForm, SymptomForm, OtherSymptomForm,Consul
+from myproject.forms import LoginForm, RegistrationForm, InfoForm, SymptomForm, OtherSymptomForm, Consul
 import myproject.ml as ml
+from flask_mail import Message
+from csv import reader, DictReader
 
 symptom_list, symptoms_spaced, symptoms_dict = ml.get_symptoms_list()
+
 
 @app.route('/predicted')
 @login_required
 def predicted():
     disease_dict = current_user.diseases_dict()
-    return render_template('predicted.html', disease_dict = disease_dict)
+    return render_template('predicted.html', disease_dict=disease_dict)
 
 
 @app.route('/logout')
@@ -26,7 +29,6 @@ def logout():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-
     form = LoginForm()
     if form.validate_on_submit():
 
@@ -49,7 +51,7 @@ def login():
         except AttributeError:
             flash("Email doesn't exist. Kindly register.")
             return redirect(url_for('login'))
-        
+
     return render_template('login.html', form=form)
 
 
@@ -83,6 +85,7 @@ def index():
         return redirect(url_for('symptom1'))
     return render_template('index.html', form=form)
 
+
 # first symptom page
 
 
@@ -102,9 +105,8 @@ def symptom1():
     return render_template('symptom1.html', form=symp_form, symptoms_spaced=symptoms_spaced)
 
 
-
 # additional symptoms page
-#check working soon
+# check working soon
 
 @app.route('/symptoms', methods=['GET', 'POST'])
 def ml_symptom():
@@ -113,12 +115,13 @@ def ml_symptom():
     symptoms_given = ml.tree_to_code(clf, cols, symptom1)
     symptoms_label = []
     for symptom in list(symptoms_given):
-        symptoms_label.append(symptom.replace('_',' '))
-    
+        symptoms_label.append(symptom.replace('_', ' '))
+
     class SymptomsForm(FlaskForm):
         symptoms = FieldList(FormField(OtherSymptomForm),
                              min_entries=len(symptoms_given))
         submit = SubmitField('Continue')
+
     form = SymptomsForm()
     if form.validate_on_submit():
         ml.yes_or_no = []
@@ -127,7 +130,7 @@ def ml_symptom():
             ml.yes_or_no.append(field.symptom.data)
         return redirect('result')
 
-    return render_template('symptoms.html', symptoms=list(symptoms_given), form=form, symptoms_label = symptoms_label)
+    return render_template('symptoms.html', symptoms=list(symptoms_given), form=form, symptoms_label=symptoms_label)
 
 
 @app.route('/result')
@@ -145,17 +148,41 @@ def result():
             db.session.commit()
             ml.yes_or_no = []
             flash('Prediction saved!')
-    return render_template("result.html", condition=ml.condition,color = ml.color, precaution_list=ml.precaution_list,
-                           predicted_disease=predicted_disease, predicted_disease_description=ml.predicted_disease_description,
-                           predicted_disease_description2 = ml.predicted_disease_description2, precaution_list2= ml.precaution_list2)
+    return render_template("result.html", condition=ml.condition, color=ml.color, precaution_list=ml.precaution_list,
+                           predicted_disease=predicted_disease,
+                           predicted_disease_description=ml.predicted_disease_description,
+                           predicted_disease_description2=ml.predicted_disease_description2,
+                           precaution_list2=ml.precaution_list2)
 
 
-@app.route('/consultation',methods = ['GET','POST'])
+@app.route('/consultation', methods=['GET', 'POST'])
 def consultation():
     form = Consul()
-    listStatus = [('Ortho', 'Orthopedic'), ('Pediat', 'Pediatric'), ('Onco', 'Oncologist')]
-    default = 'Ortho'
-    return render_template('consultation.html', listStatus=listStatus, default=default, form = form)
+    if form.validate_on_submit():
+
+        name = ''
+        email = ''
+        Specialization = form.Specialization.data
+        with open('myproject/DoctorsList.csv', 'r') as docfile:
+            read = DictReader(docfile)
+            for row in read:
+                if row['Specialization'] == Specialization:
+                    name = row['Doc_Name']
+                    email = row['Email']
+
+        msg = Message('New Appointment Confirmation', sender='predict.it.website@gmail.com', recipients=[email])
+        msg.body = f"Hello Doctor {name}.\n" \
+                   f"Here is a new appointment for you.\n" \
+                   f"Could you confirm an appointment for {form.date.data} at {form.time.data}? " \
+                   f"Please get back to the patient at {current_user.email} .\n" \
+                   f"Thank You!\n" \
+                   f"Regards\n" \
+                   f"Predict It"
+        mail.send(msg)
+        flash(f"Email/Appointment Sent to Dr.{name}")
+
+    return render_template('consultation.html', form=form)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
