@@ -7,7 +7,7 @@ from myproject.models import User, Disease
 from myproject.forms import LoginForm, RegistrationForm, InfoForm, SymptomForm, OtherSymptomForm, Consul
 import myproject.ml as ml
 from flask_mail import Message
-from csv import reader, DictReader
+from csv import DictReader
 
 symptom_list, symptoms_spaced, symptoms_dict = ml.get_symptoms_list()
 
@@ -156,10 +156,10 @@ def result():
 
 
 @app.route('/consultation', methods=['GET', 'POST'])
+@login_required
 def consultation():
     form = Consul()
     if form.validate_on_submit():
-
         name = ''
         email = ''
         Specialization = form.Specialization.data
@@ -180,7 +180,6 @@ def consultation():
                    f"Predict It"
         mail.send(msg)
         flash(f"Email/Appointment Sent to Dr.{name}")
-
     return render_template('consultation.html', form=form)
 
 

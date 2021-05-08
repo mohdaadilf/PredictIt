@@ -5,3 +5,5 @@ env
 myproject/__pycache__
 __pycache__
 myproject/__pycache__/ml.cpython-38.pyc
+myproject/Doctors List.xlsx
+myproject/DoctorsList.csv

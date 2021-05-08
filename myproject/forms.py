@@ -4,8 +4,6 @@ from wtforms import StringField, PasswordField, SubmitField, IntegerField, Radio
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 import datetime
-
-
 from wtforms.fields.html5 import DateTimeField, DateField, TimeField
 
 # LOGIN FORM
@@ -51,7 +49,7 @@ class Consul(FlaskForm):
     date = DateField('Select Date:', format='%Y-%m-%d', default=datetime.date.today(), validators=(DataRequired(),))
     time = TimeField('Select Time:', format='%H:%M',default= datetime.datetime.now(),validators=(DataRequired(),))
     Specialization = SelectField('Specialization',  choices=[('Orthopedic', 'Orthopedic'), ('Pediatrician', 'Pediatrician'),
-                                                  ('Oncologist', 'Oncologist')])
+                                                  ('Oncologist', 'Oncologist'), ('ENT', 'ENT')])
     submit = SubmitField('Confirm Appointment')
 
     def __init__(self, *args, **kwargs):

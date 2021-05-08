@@ -10,7 +10,6 @@ from flask_mail import Mail, Message
 # SETTING UP LOGIN MANAGER AND FLASK APP
 login_manager = LoginManager()
 app = Flask(__name__)
-mail = Mail(app)
 
 # CREATING THE DATABASE CONFIGS
 app.config['SECRET_KEY'] = 'mysecretkey'
