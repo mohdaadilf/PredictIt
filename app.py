@@ -162,11 +162,13 @@ def consultation():
     if form.validate_on_submit():
         name = ''
         email = ''
-        Specialization = form.Specialization.data
+        specialization = form.Specialization.data
+        # Create new csv file in myproject directory with doctor details - Have columns "Doc_Name, Specialization,
+        # Email, Phone Number"
         with open('myproject/DoctorsList.csv', 'r') as docfile:
             read = DictReader(docfile)
             for row in read:
-                if row['Specialization'] == Specialization:
+                if row['Specialization'] == specialization:
                     name = row['Doc_Name']
                     email = row['Email']
 
