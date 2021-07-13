@@ -8,6 +8,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 import csv
 import os
+
 # GLOBAL VARIABLES
 severityDictionary = dict()
 description_list = dict()
@@ -27,15 +28,17 @@ precaution_list2 = ''
 color = ''
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 def get_symptoms_list():
     df = pd.read_csv(f'{basedir}/datasets/symptom_severity.csv')
     symptom_list = df['itching'].tolist()
     symptom_list.append('itching')
     symptoms_spaced = []
     for symptom in symptom_list:
-        symptoms_spaced.append(symptom.replace('_',' '))
+        symptoms_spaced.append(symptom.replace('_', ' '))
     symptoms_dict = dict(zip(symptoms_spaced, symptom_list))
     return symptom_list, symptoms_spaced, symptoms_dict
+
 
 def list_to_string(mylist):
     mystring = ""
@@ -43,6 +46,7 @@ def list_to_string(mylist):
         mystring += item.replace('_', ' ') + ', '
     mystring = mystring[:-2]
     return mystring
+
 
 def train():
     # training part
@@ -127,7 +131,7 @@ def check_pattern(dis_list, inp):
         if regexp.search(item):
             pred_list.append(item)
             # return 1,item
-    if(len(pred_list) > 0):
+    if len(pred_list) > 0:
         return 1, pred_list
     else:
         return ptr, dis_list
@@ -212,7 +216,6 @@ def recurse2(num_days):
     for i, option in enumerate(yes_or_no):
         if option == 'yes':
             symptoms_exp.append(list(symptoms_given)[i])
-    
 
     def sec_predict(symptoms_exp):
         df = pd.read_csv(f'{basedir}/datasets/Training.csv')
@@ -237,24 +240,22 @@ def recurse2(num_days):
     def calc_condition(exp, days):
         sum = 0
         for item in exp:
-            sum = sum+severityDictionary[item]
-        if((sum*days)/(len(exp)+1) > 13):
+            sum = sum + severityDictionary[item]
+        if (sum * days) / (len(exp) + 1) > 13:
             condition1 = "You should take the consultation from doctor."
             color1 = '#c0392b'
         else:
             condition1 = "It might not be that bad but you should take precautions."
             color1 = '#c9710e'
-        return condition1,color1
-
-    
+        return condition1, color1
 
     # predicts the second disease
     second_prediction = sec_predict(symptoms_exp)
     # calculates and stores the condition
-    condition,color = calc_condition(symptoms_exp, num_days)
+    condition, color = calc_condition(symptoms_exp, num_days)
 
     # if first and 2nd disease are same, do this
-    if(present_disease[0] == second_prediction[0]):
+    if present_disease[0] == second_prediction[0]:
         predicted_disease = present_disease[0]  # disease predicted
 
         # its description
@@ -264,12 +265,12 @@ def recurse2(num_days):
     else:  # different first and second diseases
         predicted_disease = present_disease[0] + " or " + second_prediction[0]  # diseases predicted
         # descriptions
-        predicted_disease_description = description_list[present_disease[0]]  
+        predicted_disease_description = description_list[present_disease[0]]
         predicted_disease_description2 = description_list[second_prediction[0]]
     # gives the list of things to do.
     precaution_list = precautionDictionary[present_disease[0]]
     precaution_list2 = precautionDictionary[second_prediction[0]]
-    
+
 
 if __name__ == "__main__":
     a = 2

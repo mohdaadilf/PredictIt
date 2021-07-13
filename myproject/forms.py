@@ -4,7 +4,8 @@ from wtforms import StringField, PasswordField, SubmitField, IntegerField, Radio
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 import datetime
-from wtforms.fields.html5 import DateTimeField, DateField, TimeField
+from wtforms.fields.html5 import DateField, TimeField
+
 
 # LOGIN FORM
 class LoginForm(FlaskForm):
@@ -12,12 +13,14 @@ class LoginForm(FlaskForm):
     password = PasswordField('Enter Password:', validators=[DataRequired('Enter Your Password!')])
     submit = SubmitField('Log In')
 
+
 # REGISTRATION FORM
 class RegistrationForm(FlaskForm):
     name = StringField('Enter Your Name:', validators=[DataRequired('Enter Your Name Please!')])
     email = StringField('Enter Your Email:', validators=[DataRequired('Enter A Valid Email Please!'), Email()])
     password = PasswordField('Create A Password:', validators=[DataRequired('Enter Password Please!'),
-                                                               EqualTo('pass_confirm', message='Passwords Must Match!')])
+                                                               EqualTo('pass_confirm',
+                                                                       message='Passwords Must Match!')])
     pass_confirm = PasswordField('Confirm Password:', validators=[DataRequired()])
     submit = SubmitField('Register')
 
@@ -30,26 +33,33 @@ class RegistrationForm(FlaskForm):
         if field.query.filter_by(email=field.data).first():
             raise ValidationError('Your email has been registered already!')
 
+
 # BASIC INDEX FORM
 class InfoForm(FlaskForm):
     name = StringField('Enter your name to get started:', validators=[DataRequired('Kindly Enter Your Name!')])
     submit = SubmitField('Get Started')
 
+
 # FIRST SYMPTOM FORM
 class SymptomForm(FlaskForm):
     symptom1 = StringField('Enter Your Initial Symptom:', validators=[DataRequired('Kindly Enter Your Symptom!')])
-    num_days = IntegerField('Number Of Days Experiencing This Symptom From:', validators=[DataRequired('Kindly Input!')])
+    num_days = IntegerField('Number Of Days Experiencing This Symptom From:',
+                            validators=[DataRequired('Kindly Input!')])
     submit = SubmitField('Proceed')
+
 
 # OTHER SYMPTOMS FORM
 class OtherSymptomForm(Form):
-    symptom = RadioField('', choices=[('yes', 'Yes'), ('no', 'No')], validators=[DataRequired('Please Select Yes or No!')])
+    symptom = RadioField('', choices=[('yes', 'Yes'), ('no', 'No')],
+                         validators=[DataRequired('Please Select Yes or No!')])
+
 
 class Consul(FlaskForm):
     date = DateField('Select Date:', format='%Y-%m-%d', default=datetime.date.today(), validators=(DataRequired(),))
-    time = TimeField('Select Time:', format='%H:%M',default= datetime.datetime.now(),validators=(DataRequired(),))
-    Specialization = SelectField('Specialization',  choices=[('Orthopedic', 'Orthopedic'), ('Pediatrician', 'Pediatrician'),
-                                                  ('Oncologist', 'Oncologist'), ('ENT', 'ENT')])
+    time = TimeField('Select Time:', format='%H:%M', default=datetime.datetime.now(), validators=(DataRequired(),))
+    Specialization = SelectField('Specialization',
+                                 choices=[('Orthopedic', 'Orthopedic'), ('Pediatrician', 'Pediatrician'),
+                                          ('Oncologist', 'Oncologist'), ('ENT', 'ENT')])
     submit = SubmitField('Confirm Appointment')
 
     def __init__(self, *args, **kwargs):

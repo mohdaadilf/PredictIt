@@ -45,8 +45,6 @@ class User(db.Model, UserMixin):
 
 
 # diseases class
-
-
 class Disease(db.Model):
     __tablename__ = 'diseases'
     id = db.Column(db.Integer, primary_key=True)

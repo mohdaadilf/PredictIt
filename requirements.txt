@@ -19,7 +19,7 @@ pandas
 python-dateutil
 python-editor
 pytz
-
+numpy
 scipy
 six==1.15.0
 sklearn==0.0

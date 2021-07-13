@@ -6,7 +6,6 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail, Message
 
-
 # SETTING UP LOGIN MANAGER AND FLASK APP
 login_manager = LoginManager()
 app = Flask(__name__)
@@ -15,13 +14,12 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-    os.path.join(basedir, 'data.sqlite')
+                                        os.path.join(basedir, 'data.sqlite')
 print(os.path.join(basedir, 'data.sqlite'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
-#Email Initialization
-app.config['MAIL_SERVER']='smtp.gmail.com'
+# Email Initialization
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'predict.it.website@gmail.com'
 app.config['MAIL_PASSWORD'] = 'marilynaadil'

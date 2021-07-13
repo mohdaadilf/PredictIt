@@ -87,8 +87,6 @@ def index():
 
 
 # first symptom page
-
-
 @app.route('/symptom1', methods=['GET', 'POST'])
 def symptom1():
     symp_form = SymptomForm()
